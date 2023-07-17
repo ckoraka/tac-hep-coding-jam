@@ -34,6 +34,11 @@ jobs:
         run: |
           echo "::add-matcher::$GITHUB_WORKSPACE/.github/matchers/pylint.json"
           pipx run nox -s pylint
+      - name: Install Eigen
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libeigen3-dev
+
 
   checks:
     name: Check Python ${{ matrix.python-version }} on ${{ matrix.runs-on }}
