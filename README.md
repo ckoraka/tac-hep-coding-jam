@@ -1,4 +1,4 @@
-# tac-hep-coding-jam
+# Computational HEP Traineeship Summer School Coding Jam
 
 [![Actions Status][actions-badge]][actions-link]
 [![Documentation Status][rtd-badge]][rtd-link]
@@ -25,3 +25,6 @@
 [rtd-link]:                 https://tac-hep-coding-jam.readthedocs.io/en/latest/?badge=latest
 
 <!-- prettier-ignore-end -->
+
+
+# 
