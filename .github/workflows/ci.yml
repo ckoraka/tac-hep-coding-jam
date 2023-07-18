@@ -38,6 +38,8 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y libeigen3-dev
+      - name: Set Eigen3_DIR Environment Variable
+        run: echo "Eigen3_DIR=/usr/include/eigen3" >> $GITHUB_ENV
 
   checks:
     name: Check Python ${{ matrix.python-version }} on ${{ matrix.runs-on }}
