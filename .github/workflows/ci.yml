@@ -60,18 +60,18 @@ jobs:
           allow-prereleases: true
 
       - name: Install Eigen
-        run:
-          if [ "${{ matrix.runs-on }}" == "windows-latest" ]; then |
-            curl -L -o eigen.zip >
-            https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.zip |
-            tar -xvf eigen.zip -C $HOME |
-          elif [ "${{ matrix.runs-on }}" == "macos-latest" ]; then |
-            curl -L -o eigen.zip >
-            https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.zip |
-            tar -xvf eigen.zip -C $HOME |
-          else |
-            sudo apt-get update |
-            sudo apt-get install -y libeigen3-dev |
+        run: |
+          if [ "${{ matrix.runs-on }}" == "windows-latest" ]; then \
+            curl -L -o eigen.zip \
+            https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.zip ;\
+            tar -xvf eigen.zip -C $HOME ; \
+          elif [ "${{ matrix.runs-on }}" == "macos-latest" ]; then \
+            curl -L -o eigen.zip \
+            https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.zip ;\
+            tar -xvf eigen.zip -C $HOME ; \
+          else \
+            sudo apt-get update ; \
+            sudo apt-get install -y libeigen3-dev ; \
           fi
 
       - name: Install package
