@@ -9,7 +9,9 @@ build:
     python: "3.11"
 sphinx:
   configuration: docs/conf.py
-  requirements_file: docs/requirements.txt
+
+conda:
+  environment: docs/environment.yml
 
 python:
   install:
