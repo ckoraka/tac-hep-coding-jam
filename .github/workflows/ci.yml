@@ -55,6 +55,7 @@ jobs:
           use-mamba: true
 
       - name: Install dependencies and package
+        shell: bash -el {0}
         run: |
           mamba env list
           mamba install eigen python=${{ matrix.python-version }}
