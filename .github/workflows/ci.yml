@@ -56,7 +56,6 @@ jobs:
 
       - name: Install dependencies and package
         run: |
-          conda activate base
           mamba env list
           mamba install eigen python=${{ matrix.python-version }}
           mamba list
