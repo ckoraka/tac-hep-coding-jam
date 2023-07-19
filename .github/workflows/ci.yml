@@ -59,6 +59,7 @@ jobs:
           mamba env list
           mamba install eigen
           mamba list
+          which python
           python -m pip install .[test]
           mamba list
 
