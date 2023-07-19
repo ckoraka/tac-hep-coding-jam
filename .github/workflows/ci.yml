@@ -21,6 +21,10 @@ jobs:
     name: Format
     runs-on: ubuntu-latest
     steps:
+      - name: Install Eigen (Linux/macOS)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libeigen3-dev
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
@@ -30,10 +34,6 @@ jobs:
       - uses: pre-commit/action@v3.0.0
         with:
           extra_args: --hook-stage manual --all-files
-      - name: Install Eigen (Linux/macOS)
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libeigen3-dev
 
   checks:
     name: Check Python ${{ matrix.python-version }} on ${{ matrix.runs-on }}
