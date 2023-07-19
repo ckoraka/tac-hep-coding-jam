@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install Eigen (Linux/macOS)
-        run: >
+        run: |
           sudo apt-get update
           sudo apt-get install -y libeigen3-dev
       - uses: actions/checkout@v3
@@ -50,6 +50,21 @@ jobs:
             runs-on: ubuntu-latest
 
     steps:
+      - name: Install Eigen
+        run: |
+          if [ "${{ matrix.runs-on }}" == "windows-latest" ]; then
+            eigen_url="https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.zip"
+            curl -L -o eigen.zip ${{eigen_url}}
+            tar -xvf eigen.zip -C $HOME
+          elif [ "${{ matrix.runs-on }}" == "macos-latest" ]; then
+            eigen_url="https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.zip"
+            curl -L -o eigen.zip ${{eigen_url}}
+            tar -xvf eigen.zip -C $HOME
+          else
+            sudo apt-get update
+            sudo apt-get install -y libeigen3-dev
+          fi
+
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
@@ -58,21 +73,6 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
           allow-prereleases: true
-
-      - name: Install Eigen
-        run: |
-          if [ "${{ matrix.runs-on }}" == "windows-latest" ]; then
-            curl -L -o eigen.zip \
-            https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.zip
-            tar -xvf eigen.zip -C $HOME
-          elif [ "${{ matrix.runs-on }}" == "macos-latest" ]; then
-            curl -L -o eigen.zip \
-            https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.zip
-            tar -xvf eigen.zip -C $HOME
-          else
-            sudo apt-get update
-            sudo apt-get install -y libeigen3-dev
-          fi
 
       - name: Install package
         run: python -m pip install .[test]
