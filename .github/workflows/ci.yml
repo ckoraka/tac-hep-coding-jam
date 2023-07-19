@@ -34,6 +34,7 @@ jobs:
           use-mamba: true
 
       - name: Install Eigen from conda
+        shell: "bash -l {0}"
         run: mamba install eigen
 
       - uses: pre-commit/action@v3.0.0
@@ -41,6 +42,7 @@ jobs:
           extra_args: --hook-stage manual --all-files
 
       - name: Run PyLint
+        shell: "bash -l {0}"
         run: |
           echo "::add-matcher::$GITHUB_WORKSPACE/.github/matchers/pylint.json"
           pipx run nox -s pylint
