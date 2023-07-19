@@ -57,16 +57,16 @@ jobs:
       - name: Install dependencies and package
         run: |
           mamba env list
-          mamba install eigen
+          mamba install eigen python=${{ matrix.python-version }}
           mamba list
           which python
           python -m pip install .[test]
           mamba list
 
       - name: Test package
-        run: >-
-          python -m pytest -ra --cov --cov-report=xml --cov-report=term
-          --durations=20
+        run: |
+          which python
+          python -m pytest -ra --cov --cov-report=xml --cov-report=term --durations=20
 
       - name: Upload coverage report
         uses: codecov/codecov-action@v3.1.4
