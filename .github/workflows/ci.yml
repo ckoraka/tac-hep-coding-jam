@@ -41,6 +41,10 @@ jobs:
         python-version: ["3.8", "3.11"]
         runs-on: [ubuntu-latest, macos-latest, windows-latest]
 
+    defaults:
+      run:
+        shell: "bash -l {0}"
+
     steps:
       - uses: actions/checkout@v3
         with:
@@ -54,21 +58,14 @@ jobs:
           miniforge-variant: Mambaforge
           use-mamba: true
 
-      - name: Install dependencies and package
-        shell: bash -el {0}
-        run: |
-          mamba env list
-          mamba install eigen python=${{ matrix.python-version }}
-          mamba list
-          which python
-          python -m pip install .[test]
-          mamba list
+      - name: Install Eigen from conda
+        run: mamba install eigen
+
+      - name: Install package
+        run: python -m pip install .[test]
 
       - name: Test package
-        shell: bash -el {0}
-        run: |
-          which python
-          python -m pytest -ra --cov --cov-report=xml --cov-report=term --durations=20
+        run: python -m pytest -ra --cov --cov-report=xml --cov-report=term --durations=20
 
       - name: Upload coverage report
         uses: codecov/codecov-action@v3.1.4
