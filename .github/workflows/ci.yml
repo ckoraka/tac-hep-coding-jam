@@ -15,6 +15,23 @@ env:
   FORCE_COLOR: 3
 
 jobs:
+  name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - uses: pre-commit/action@v3.0.0
+        with:
+          extra_args: --hook-stage manual --all-files
+
+      - name: Run PyLint
+        run: |
+          echo "::add-matcher::$GITHUB_WORKSPACE/.github/matchers/pylint.json"
+          pipx run nox -s pylint
+
+
   tests:
     name: Check Python ${{ matrix.python-version }} on ${{ matrix.runs-on }}
     runs-on: ${{ matrix.runs-on }}
@@ -36,22 +53,9 @@ jobs:
       - name: Install package
         run: python -m pip install .[test]
 
-      - name: Run pre-commit
-        if: "runner.os != 'macOS'  &&  runner.os != 'Windows'"
-        uses: pre-commit/action@v3.0.0
-        with:
-          extra_args: --hook-stage manual --all-files
-
-      - name: Run PyLint
-        if: "runner.os != 'macOS'  &&  runner.os != 'Windows'"
-        run: |
-          echo "::add-matcher::$GITHUB_WORKSPACE/.github/matchers/pylint.json"
-          pipx run nox -s pylint
-
       - name: Run pytest
-        run:
-          python -m pytest -ra --cov --cov-report=xml --cov-report=term
-          --durations=20
+        run: |
+          python -m pytest --cov --cov-report=xml --cov-report=term --durations=20
 
       - name: Upload coverage report
         uses: codecov/codecov-action@v3.1.4
