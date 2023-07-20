@@ -1,3 +1,5 @@
+#include <Eigen/Dense>
+#include <pybind11/eigen.h>
 #include <pybind11/pybind11.h>
 
 int add(int i, int j) { return i + j; }
@@ -5,24 +7,14 @@ int add(int i, int j) { return i + j; }
 namespace py = pybind11;
 
 PYBIND11_MODULE(_core, m) {
-  m.doc() = R"pbdoc(
-      Pybind11 example plugin
-      -----------------------
-      .. currentmodule:: python_example
-      .. autosummary::
-         :toctree: _generate
-         add
-         subtract
-  )pbdoc";
-
-  m.def("add", &add, R"pbdoc(
-      Add two numbers
-      Some other explanation about the add function.
-  )pbdoc");
+  m.def("add", &add, "Add two numbers");
 
   m.def(
-      "subtract", [](int i, int j) { return i - j; }, R"pbdoc(
-      Subtract two numbers
-      Some other explanation about the subtract function.
-  )pbdoc");
+      "subtract", [](int i, int j) { return i - j; }, "Subtract two numbers");
+
+  m.def("matrix", [](int size) {
+    Eigen::MatrixXd arr{size, size};
+    arr.setZero();
+    return arr;
+  });
 }
