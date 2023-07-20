@@ -30,7 +30,7 @@ classifiers = [
   "Typing :: Typed",
 ]
 dependencies = [
-  "typing_extensions >=4.6; python_version<'3.11'",
+  "numpy",
 ]
 
 [project.optional-dependencies]
@@ -56,6 +56,8 @@ Homepage = "https://github.com/ckoraka/tac-hep-coding-jam.git"
 "Bug Tracker" = "https://github.com/ckoraka/tac-hep-coding-jam.git/issues"
 Discussions = "https://github.com/ckoraka/tac-hep-coding-jam.git/discussions"
 Changelog = "https://github.com/ckoraka/tac-hep-coding-jam.git/releases"
+
+
 [tool.scikit-build]
 minimum-version = "0.2"
 build-dir = "build/{cache_tag}"
@@ -67,7 +69,6 @@ addopts = ["-ra", "--showlocals", "--strict-markers", "--strict-config"]
 xfail_strict = true
 filterwarnings = [
   "error",
-  "ignore:(ast.Str|Attribute s|ast.NameConstant|ast.Num) is deprecated:DeprecationWarning:_pytest",
 ]
 log_cli_level = "INFO"
 testpaths = [
@@ -130,7 +131,6 @@ extend-ignore = [
   "PLR",    # Design related pylint codes
   "E501",   # Line too long
 ]
-typing-modules = ["tac_hep_coding_jam._compat.typing"]
 src = ["src"]
 unfixable = [
   "T20",  # Removes print statements
