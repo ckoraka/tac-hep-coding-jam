@@ -71,7 +71,7 @@ Successfully installed tac-hep-coding-jam-0.1.0
 Check the code quality:
 
 ```
-% pre-commit run --all-files 
+% pre-commit run --all-files
 black-jupyter............................................................Passed
 blacken-docs.............................................................Passed
 check for added large files..............................................Passed
@@ -107,7 +107,7 @@ platform darwin -- Python 3.10.8, pytest-7.4.0, pluggy-1.2.0
 rootdir: /Users/jpivarski/talks/tac-hep-coding-jam
 configfile: pyproject.toml
 plugins: timeout-2.1.0, cov-4.1.0, anyio-3.7.1, typeguard-2.13.3, xdist-3.3.1
-collected 4 items                                                                     
+collected 4 items
 
 tests/test_compiled.py ...                                                      [ 75%]
 tests/test_package.py .                                                         [100%]
