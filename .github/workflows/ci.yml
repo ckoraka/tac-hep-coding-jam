@@ -15,7 +15,7 @@ env:
   FORCE_COLOR: 3
 
 jobs:
-  name: Lint
+  name: Check code quality
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
