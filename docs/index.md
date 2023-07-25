@@ -2,8 +2,8 @@
 
 ```{toctree}
 :maxdepth: 2
-:hidden:
 
+installation
 ```
 
 ```{include} ../README.md
