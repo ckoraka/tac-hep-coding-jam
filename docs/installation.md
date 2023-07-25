@@ -4,3 +4,5 @@
 ```
 pip install .
 ```
+
+And that is how you install file
