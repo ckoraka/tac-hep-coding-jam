@@ -56,3 +56,6 @@ def test_matrix():
     # do not allow matricies with non-integer size (duh)
     # with pytest.raises(TypeError):
     #     m.matrix(1.5)
+
+def test_eigenvalues():
+    return
