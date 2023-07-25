@@ -6,37 +6,27 @@ from numpy.typing import NDArray
 import tac_hep_coding_jam._core as m
 
 
-def add(x: int, y: int) -> int:
+def add(x_1: int, x_2: int) -> int:
     """This function is used for adding two integers together."""
-    if not isinstance(x, int):
-        msg = "x must be an integer"
-        raise TypeError(msg)
-    if not isinstance(y, int):
-        msg = "y must be an integer"
-        raise TypeError(msg)
+    assert isinstance(x_1, int), "Arguments must be integers."
+    assert isinstance(x_2, int), "Arguments must be integers."
 
-    return m.add(x, y)
+    return m.add(x_1, x_2)
 
 
-def subtract(x: int, y: int) -> int:
+def subtract(x_1: int, x_2: int) -> int:
     """This function returns the difference of two integer."""
-    if not isinstance(x, int):
-        msg = "x must be an integer."
-        raise TypeError(msg)
-    if not isinstance(y, int):
-        msg = "y must be an integer."
-        raise TypeError(msg)
+    assert isinstance(x_1, int), "Arguments must be integers."
+    assert isinstance(x_2, int), "Arguments must be integers."
 
-    return m.subtract(x, y)
+    return m.subtract(x_1, x_2)
 
 
-def matrix(x: int) -> NDArray[np.float64]:
+def matrix(x_1: int) -> NDArray[np.float64]:
     """This function returns a square zero array matrix of integer size."""
-    if not isinstance(x, int):
-        msg = "Matrix must be integer size."
-        raise TypeError(msg)
-    if x < 0:
+    assert isinstance(x_1, int), "Matrix must have integer size"
+    if x_1 < 0:
         msg = "Matrix must have positive length."
         raise ValueError(msg)
 
-    return m.matrix(x)
+    return m.matrix(x_1)
