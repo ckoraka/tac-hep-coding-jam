@@ -4,6 +4,7 @@ import numpy as np
 import pytest
 
 import tac_hep_coding_jam._core as m
+import tac_hep_coding_jam.real_matrices as rm
 
 """
 Type mappings for C++/Python
@@ -58,4 +59,6 @@ def test_matrix():
     #     m.matrix(1.5)
 
 def test_eigenvalues():
+    rm.eigenvectors(np.array([[5, 3], [3, 1]]))
     return
+
