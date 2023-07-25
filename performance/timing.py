@@ -14,4 +14,4 @@ def timing(func, sizes):
 
     return stats
 
-cholesky_performance = timing(lambda x: scipy.linalg.cholesky(x, lower=True), range(10,100,10)))
+cholesky_performance = timing(lambda x: scipy.linalg.cholesky(x, lower=True), range(10,100,10))
