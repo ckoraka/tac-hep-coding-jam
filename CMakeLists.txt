@@ -14,5 +14,10 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(eigen)
 
 pybind11_add_module(_core MODULE src/main.cpp)
+pybind11_add_module(_eigenvalues MODULE src/generalizedSelfAdjointEigenSolver.cpp)
+
 target_include_directories(_core PRIVATE "${eigen_SOURCE_DIR}")
-install(TARGETS _core DESTINATION ${SKBUILD_PROJECT_NAME})
+target_include_directories(_eigenvalues PRIVATE "${eigen_SOURCE_DIR}")
+
+
+install(TARGETS _core _eigenvalues DESTINATION ${SKBUILD_PROJECT_NAME})
