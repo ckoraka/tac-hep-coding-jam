@@ -21,3 +21,7 @@ target_include_directories(_core PRIVATE "${eigen_SOURCE_DIR}")
 target_include_directories(_eigenvalues PRIVATE "${eigen_SOURCE_DIR}")
 
 install(TARGETS _core _eigenvalues DESTINATION ${SKBUILD_PROJECT_NAME})
+pybind11_add_module(real_matrices MODULE src/real_matrices.cpp)
+target_include_directories(_core PRIVATE "${eigen_SOURCE_DIR}")
+target_include_directories(real_matrices PRIVATE "${eigen_SOURCE_DIR}")
+install(TARGETS _core real_matrices DESTINATION ${SKBUILD_PROJECT_NAME})
