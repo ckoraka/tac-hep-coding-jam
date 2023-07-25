@@ -15,4 +15,6 @@ FetchContent_MakeAvailable(eigen)
 
 pybind11_add_module(_core MODULE src/main.cpp)
 target_include_directories(_core PRIVATE "${eigen_SOURCE_DIR}")
+pybind11_add_module(_eigenLLT MODULE src/LLT.cpp)
+target_include_directories(_eigenLLT PRIVATE "${eigen_SOURCE_DIR}")
 install(TARGETS _core DESTINATION ${SKBUILD_PROJECT_NAME})
