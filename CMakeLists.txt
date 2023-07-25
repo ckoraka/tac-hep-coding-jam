@@ -14,5 +14,7 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(eigen)
 
 pybind11_add_module(_core MODULE src/main.cpp)
+pybind11_add_module(real_matrices MODULE src/real_matrices.cpp)
 target_include_directories(_core PRIVATE "${eigen_SOURCE_DIR}")
-install(TARGETS _core DESTINATION build)
+target_include_directories(real_matrices PRIVATE "${eigen_SOURCE_DIR}")
+install(TARGETS _core real_matrices DESTINATION ${SKBUILD_PROJECT_NAME})
