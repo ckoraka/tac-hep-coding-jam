@@ -28,7 +28,7 @@ def pylint(session: nox.Session) -> None:
     # This needs to be installed into the package environment, and is slower
     # than a pre-commit check
     session.install(".", "pylint")
-    session.run("pylint", "src", *session.posargs)
+    session.run("pylint", "tac_hep_coding_jam", *session.posargs)
 
 
 @nox.session
