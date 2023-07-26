@@ -3,8 +3,8 @@ from __future__ import annotations
 import numpy as np
 import pytest
 
-import tac_hep_coding_jam._core as m
-
+import tac_hep_coding_jam.module as m
+import tac_hep_coding_jam.real_matrices as rm
 """
 Type mappings for C++/Python
 - MatrixType (MatrixXd) | NDArray[np.float64]
@@ -56,3 +56,19 @@ def test_matrix():
     # do not allow matricies with non-integer size (duh)
     # with pytest.raises(TypeError):
     #     m.matrix(1.5)
+
+
+
+def test_eigenvalues():
+    #test that the eigenvalues lenght is not bigger than the rank of the matrix
+
+    testMatrix1 = np.array([[5,2],
+                            [2,1]])
+
+    eigvals = rm.eigenvalues(testMatrix1)
+
+    #    assert = that those are the right eigenvalus which you can just find somewhere. 
+    assert len(eigvals) <= 2 
+
+
+
