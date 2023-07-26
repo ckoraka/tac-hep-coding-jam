@@ -2,11 +2,13 @@
 
 ```{toctree}
 :maxdepth: 2
-:hidden:
-
+installation
+test
+eigen_vectors
+eigen_values
 ```
 
-```{include} ../README.md
+```{include} ../README.rst
 :start-after: <!-- SPHINX-START -->
 ```
 
