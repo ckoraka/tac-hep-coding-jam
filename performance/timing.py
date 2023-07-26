@@ -3,7 +3,6 @@ from __future__ import annotations
 import timeit
 
 import numpy as np
-import scipy.linalg
 
 
 # takes in a function and a list of matrix sizes N (for NxN matrices) and tests performance for each matrix
