@@ -3,7 +3,9 @@
 ```{toctree}
 :maxdepth: 2
 installation
-
+test
+eigen_vectors
+eigen_values
 ```
 
 ```{include} ../README.rst
