@@ -2,11 +2,11 @@
 
 ```{toctree}
 :maxdepth: 2
-:hidden:
+installation
 
 ```
 
-```{include} ../README.md
+```{include} ../README.rst
 :start-after: <!-- SPHINX-START -->
 ```
 
