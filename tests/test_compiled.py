@@ -58,7 +58,7 @@ def test_matrix():
     # with pytest.raises(TypeError):
     #     m.matrix(1.5)
 
+
 def test_eigenvalues():
     rm.eigenvectors(np.array([[5, 3], [3, 1]]))
     return
-
