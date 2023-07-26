@@ -14,6 +14,12 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(eigen)
 
 pybind11_add_module(_core MODULE src/main.cpp)
+pybind11_add_module(_eigenvalues MODULE src/selfAdjointEigenSolver.cpp)
+
+target_include_directories(_core PRIVATE "${eigen_SOURCE_DIR}")
+target_include_directories(_eigenvalues PRIVATE "${eigen_SOURCE_DIR}")
+
+install(TARGETS _core _eigenvalues DESTINATION ${SKBUILD_PROJECT_NAME})
 pybind11_add_module(real_matrices MODULE src/real_matrices.cpp)
 target_include_directories(_core PRIVATE "${eigen_SOURCE_DIR}")
 pybind11_add_module(_eigenLLT MODULE src/LLT.cpp)
