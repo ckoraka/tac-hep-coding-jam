@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 
 # Takes an array of outputs from the timing function, a corresponding label array for the legend and a plot name
-def plotting(timing_arr, label_arr, fig_name):
+def perf_plotting(timing_arr, label_arr, fig_name):
     for timing, label in zip(timing_arr, label_arr):  # Add each set of data to plot
         plt.errorbar(
             timing[:, 0],

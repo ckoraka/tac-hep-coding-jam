@@ -1,13 +1,8 @@
 from __future__ import annotations
 
 from numpy import linalg
-from plotting import plotting
-from timing import timing
-
-
-def eighbench_mark(inMat):
-    linalg.eigh(inMat)
-
+from plotting import perf_plotting
+from timing import calc_timing
 
 if __name__ == "__main__":
     # print(timeit.repeat(timer=t,repeat = 1000000, number = 1))
@@ -15,11 +10,11 @@ if __name__ == "__main__":
     # time_arr = timeit.repeat(lambda: eighbench_mark(sig2),repeat=1000000,number=1)
     # print(np.mean(time_arr))
 
-    numpy_stats1 = timing((lambda x: linalg.eigh(x)), range(10, 100, 10))
-    numpy_stats2 = timing((lambda x: linalg.eigh(x)), range(10, 100, 10))
-    stats_arr = [numpy_stats1, numpy_stats2]
+    numpy_stats1 = calc_timing((lambda x: linalg.eigh(x)), range(10, 100, 10))
+    numpy_stats2 = calc_timing((lambda x: linalg.eigh(x)), range(10, 100, 10))
+    stats_arr = [numpy_stats1]
 
-    plotting(stats_arr, ["numpy.linalg.eigh()_1", "numpy.linalg.eigh()_2"], "TestPlot")
+    perf_plotting(stats_arr, ["numpy.linalg.eigh()"], "TestPlot")
 
 # plt.plot(timeArr,'*')
 # plt.savefig("TestPlot.png")
