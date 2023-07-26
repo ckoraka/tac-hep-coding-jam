@@ -3,7 +3,7 @@
 ```{toctree}
 :maxdepth: 2
 installation
-test
+module
 eigen_vectors
 eigen_values
 ```

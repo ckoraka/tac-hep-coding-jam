@@ -8,7 +8,10 @@ import tac_hep_coding_jam._core as m
 
 
 def add(_x: int, _y: int) -> int:
-    """This function is used for adding two integers together."""
+    """This function is used for adding two integers together.
+
+    Arguments x and y must be integers.
+    """
     assert isinstance(_x, int), "Arguments must be integers."
     assert isinstance(_y, int), "Arguments must be integers."
 
@@ -16,7 +19,11 @@ def add(_x: int, _y: int) -> int:
 
 
 def subtract(_x: int, _y: int) -> int:
-    """This function returns the difference of two integer. This will take argument 1, and subtract argument 2 from it."""
+    """This function returns the difference of two integers. This will take argument 1,
+    and subtract argument 2 from it.
+
+    Arguments x and y must be integers.
+    """
     assert isinstance(_x, int), "Arguments must be integers."
     assert isinstance(_y, int), "Arguments must be integers."
 
@@ -24,7 +31,10 @@ def subtract(_x: int, _y: int) -> int:
 
 
 def matrix(_x: int) -> NDArray[np.float64]:
-    """This function returns a square zero array matrix of integer size."""
+    """This function outputs a square zero matrix of size x.
+
+    Argument x must be an integer.
+    """
     assert isinstance(_x, int), "Matrix must have integer size"
     if _x < 0:
         msg = "Matrix must have positive length."
