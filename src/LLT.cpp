@@ -19,9 +19,9 @@ PYBIND11_MODULE(_eigenLLT, m) {
   m.def(
       "computeAndSolve",
       [](Eigen::MatrixXf a, Eigen::MatrixXf b) {
-        std::cout << "Here is the matrix A:\n" << a << std::endl;
-        std::cout << "Here is the right hand side b:\n" << b << std::endl;
-        std::cout << "Computing LLT decomposition..." << std::endl;
+        // std::cout << "Here is the matrix A:\n" << a << std::endl;
+        // std::cout << "Here is the right hand side b:\n" << b << std::endl;
+        // std::cout << "Computing LLT decomposition..." << std::endl;
         foo.compute(a);
         std::cout << "The solution is:\n" << foo.solve(b) << std::endl;
         return foo.solve(b);
@@ -31,9 +31,9 @@ PYBIND11_MODULE(_eigenLLT, m) {
   m.def(
       "computeAndSolve",
       [](Eigen::MatrixXd a, Eigen::MatrixXd b) {
-        std::cout << "Here is the matrix A:\n" << a << std::endl;
-        std::cout << "Here is the right hand side b:\n" << b << std::endl;
-        std::cout << "Computing LLT decomposition..." << std::endl;
+        // std::cout << "Here is the matrix A:\n" << a << std::endl;
+        // std::cout << "Here is the right hand side b:\n" << b << std::endl;
+        // std::cout << "Computing LLT decomposition..." << std::endl;
         bar.compute(a);
         std::cout << "The solution is:\n" << bar.solve(b) << std::endl;
         return bar.solve(b);
