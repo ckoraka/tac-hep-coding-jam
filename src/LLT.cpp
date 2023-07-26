@@ -5,6 +5,7 @@
 namespace py = pybind11;
 
 Eigen::LLT<Eigen::MatrixXf> foo;
+Eigen::LLT<Eigen::MatrixXd> bar;
 
 PYBIND11_MODULE(_eigenLLT, m) {
 
@@ -22,11 +23,11 @@ PYBIND11_MODULE(_eigenLLT, m) {
       },
       "Compute Eigenvales of Matrix A to solve b = Ax problem. A = LL^T");
 
-    m.def(
+  m.def(
       "computeAndSolve",
       [](Eigen::MatrixXd a, Eigen::MatrixXd b) {
-        foo.compute(a);
-        return foo.solve(b);
+        bar.compute(a);
+        return bar.solve(b);
       },
       "Compute Eigenvales of Matrix A to solve b = Ax problem. A = LL^T");
 }
